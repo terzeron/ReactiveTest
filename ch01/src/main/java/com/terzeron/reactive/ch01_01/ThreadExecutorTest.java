@@ -1,13 +1,16 @@
-package com.terzeron.reactive;
+package com.terzeron.reactive.ch01_01;
 
 import java.time.LocalDateTime;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class Step1 {
-    public static void main(String[] args) throws Exception {
+public class ThreadExecutorTest {
+    public ThreadExecutorTest() {
+        System.out.println("---- ThreadExecutorTest ----");
+    }
+
+    public void run() throws Exception {
         ExecutorService es = Executors.newSingleThreadExecutor();
         Executors.newFixedThreadPool(4);
         Executors.newCachedThreadPool();
@@ -23,7 +26,7 @@ public class Step1 {
 
     private static String longTermJob(String name) throws Exception {
         print("start longterm job");
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         return "**" + name + "**";
     }
 

@@ -1,13 +1,16 @@
-package com.terzeron.reactive;
+package com.terzeron.reactive.ch01_01;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 
-public class Step2 {
-    public static void main(String[] args) throws Exception {
+public class ThreadExecutorForkJoinPoolTest {
+    public ThreadExecutorForkJoinPoolTest() {
+        System.out.println("---- ThreadExecutorForkJoinPoolTest ----");
+    }
+
+    public void run() throws Exception {
         ExecutorService es = ForkJoinPool.commonPool();
 
         //es.execute(() -> print("My single thread pool"));
@@ -20,7 +23,7 @@ public class Step2 {
 
     private static String longTermJob(String name) throws Exception {
         print("start job");
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         print("end job");
         return "**" + name + "**";
     }

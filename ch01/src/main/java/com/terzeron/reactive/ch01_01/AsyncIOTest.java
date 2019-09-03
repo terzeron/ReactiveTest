@@ -1,5 +1,6 @@
-package com.terzeron.reactive;
+package com.terzeron.reactive.ch01_01;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousFileChannel;
 import java.nio.channels.CompletionHandler;
@@ -7,12 +8,16 @@ import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
 
 
-public class Step3 {
-    public static void main(String[] args) throws Exception {
+public class AsyncIOTest {
+    boolean isStopped = false;
+
+    public AsyncIOTest() {
+        System.out.println("---- AsyncIOTest ----");
+    }
+
+    public void run() throws Exception {
         Path file;
         AsynchronousFileChannel ch = AsynchronousFileChannel.open(Path.of("test.txt"), StandardOpenOption.READ);
         ByteBuffer buffer = ByteBuffer.allocate(1024);
@@ -29,26 +34,24 @@ public class Step3 {
         ch.read(buffer, 0, null, new CompletionHandler<>() {
             public void completed(Integer result, Object attachment) {
                 print("Content: " + decodeBuffer(buffer));
+                isStopped = true;
             }
 
             public void failed(Throwable exc, Object attachment) {
                 print("Error! " + exc.getMessage());
+                isStopped = true;
             }
         });
-        Thread.sleep(5000);
+
+        while (!isStopped) {
+            Thread.sleep(1000);
+        }
     }
 
     private static String decodeBuffer(ByteBuffer buffer) {
         buffer.flip();
         Charset charset = Charset.defaultCharset();
         return charset.decode(buffer).toString();
-    }
-
-    private static String longTermJob(String name) throws Exception {
-        print("start job");
-        Thread.sleep(5000);
-        print("end job");
-        return "**" + name + "**";
     }
 
     private static void print(String msg) {

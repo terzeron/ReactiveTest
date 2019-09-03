@@ -1,9 +1,13 @@
-package com.terzeron.reactive;
+package com.terzeron.reactive.ch01_01;
 
 import java.time.LocalDateTime;
 
-public class Step0 {
-    public static void main(String[] args) throws Exception {
+public class ThreadTest {
+    public ThreadTest() {
+        System.out.println("---- ThreadTest ----");
+    }
+
+    public void run() throws Exception {
         Thread t = new Thread(() -> print("My first thread"));
         t.start();
         t.join();
