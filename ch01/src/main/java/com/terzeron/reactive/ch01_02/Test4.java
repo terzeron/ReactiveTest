@@ -4,6 +4,10 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Test4 {
+    public Test4() {
+        System.out.println("---- Test4 ----");
+    }
+
     static class IntObservable extends Observable implements Runnable {
         @Override
         public void run() {
@@ -14,7 +18,7 @@ public class Test4 {
         }
     }
 
-    public static void main(String[] args) {
+    public void run() {
         Observer observer = new Observer() {
 
             @Override
