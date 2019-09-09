@@ -90,7 +90,6 @@
         <module>ch01</module>
         <module>ch02</module>
         <module>ch03</module>
-        <module>ListenableFutureTest</module>
         <module>CompletableFutureTest</module>
         <module>WebClientTest</module>
     </modules>
