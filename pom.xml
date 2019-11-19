@@ -94,5 +94,8 @@
         <module>WebClientTest</module>
         <module>ch04</module>
         <module>ch06</module>
+        <module>ch06-02/socketserver</module>
+        <module>ch06-02/socketclient</module>
+        <module>ch06-02/webflux-thymeleaf-serversentevent</module>
     </modules>
 </project>
