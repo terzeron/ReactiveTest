@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>com.terzeron.reactive.ch06</artifactId>
+    <artifactId>ch06</artifactId>
 
     <dependencies>
         <dependency>
